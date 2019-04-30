@@ -73,12 +73,7 @@ class Student
        DB[:conn]execute.(sql, grade).collect do |row|
          self.new_from_db(row)
        end
-       
-       
-     end 
-   
-   
-  
+     end
   
   def save
     sql = <<-SQL
