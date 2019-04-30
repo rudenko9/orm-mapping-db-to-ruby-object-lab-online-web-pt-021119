@@ -66,6 +66,15 @@ class Student
      end 
      
      def self.all_students_in_grade_X(garde)
+       sql = <<-SQL
+       SELECT * FROM students WHERE grade = ? LIMIT 1 
+       SQL
+       
+       DB[:conn]execute.(sql, grade).collect do |row|
+         self.new_from_db(row)
+       end
+       
+       
      end 
    
    
